@@ -1,4 +1,6 @@
 const crypto = require('crypto')
+const fs = require('fs')
+const path = require('path')
 
 function gerarSlug(nome) {
   return nome
@@ -17,12 +19,26 @@ function gerarEnv({ nome, dominio }) {
   const storeId = gerarSlug(nome)
 
   return `
-DATABASE_URL="COLOCAR_DATABASE_AQUI"
-JWT_SECRET="${gerarSecret()}"
-ASAAS_API_KEY="COLOCAR_ASAAS_KEY_AQUI"
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_UPLOAD_PRESET="ml_default"
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
+CLOUDINARY_URL=
+
+DATABASE_URL=
+POSTGRES_URL=
+PRISMA_DATABASE_URL=
+
+AUTH_JWT_SECRET="${gerarSecret()}"
+SETUP_ADMIN_KEY="${gerarSecret()}"
+
+MELHOR_ENVIO_TOKEN=
+
+ASAAS_API_KEY=
+ASAAS_WALLET_ID=
+
 NEXT_PUBLIC_SITE_URL="https://${dominio}"
 NEXT_PUBLIC_STORE_ID="${storeId}"
-SETUP_ADMIN_KEY="${gerarSecret()}"
 `.trim()
 }
 
@@ -39,24 +55,18 @@ if (!nome || !dominio) {
 const storeId = gerarSlug(nome)
 const env = gerarEnv({ nome, dominio })
 
-console.log('\n🚀 CLIENTE GERADO:\n')
+const caminhoEnv = path.join(process.cwd(), '.env')
 
+fs.writeFileSync(caminhoEnv, env + '\n', 'utf8')
+
+console.log('\n🚀 CLIENTE GERADO:\n')
 console.log('📛 Nome:', nome)
 console.log('🆔 STORE_ID:', storeId)
 console.log('🌐 Domínio:', dominio)
+console.log('\n📄 Arquivo criado:')
+console.log(caminhoEnv)
 
-console.log('\n📦 Nome do projeto:')
-console.log(`${storeId}-store`)
-
-console.log('\n🔐 .env:')
+console.log('\n🔐 Conteúdo do .env:')
 console.log('-------------------------')
 console.log(env)
 console.log('-------------------------')
-
-console.log('\n✅ Próximos passos:')
-console.log('1. Criar banco')
-console.log('2. Criar conta Asaas')
-console.log('3. Colar .env')
-console.log('4. Deploy na Vercel\n')
-
-// node scripts/novo-cliente.js "Nome da Loja" dominio.com

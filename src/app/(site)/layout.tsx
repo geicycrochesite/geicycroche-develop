@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import "@/app/globals.css";
-import Header from "@/core/components/Header";
+import Header from "@/client/components/Header";
 import { CartProvider } from '@/core/context/CartContext';
 import { Toaster } from "react-hot-toast";
-import Footer from "@/core/components/Footer";
+import Footer from "@/client/components/Footer";
 import { siteConfig } from "@/client/config/site.config";
 
 export const metadata: Metadata = {

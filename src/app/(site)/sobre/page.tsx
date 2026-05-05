@@ -19,7 +19,7 @@ export default async function SobrePage() {
       {/* Título */}
       <div>
         <h1 className="text-3xl font-bold">{page.title}</h1>
-        <p className="text-[var(--color-text-secondary)] mt-2">{page.introText}</p>
+        <p className="whitespace-pre-line text-[var(--color-text-secondary)] mt-2">{page.introText}</p>
       </div>
 
       {/* Imagens */}
@@ -34,7 +34,7 @@ export default async function SobrePage() {
         <h2 className="text-xl font-semibold">
           💛 {page.section1Title}
         </h2>
-        <p className="text-[var(--color-text-secondary)] mt-2">
+        <p className="whitespace-pre-line text-[var(--color-text-secondary)] mt-2">
           {page.section1Text}
         </p>
       </div>

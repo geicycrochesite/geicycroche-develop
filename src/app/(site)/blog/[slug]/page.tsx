@@ -74,10 +74,9 @@ export default async function BlogPostPage({ params }: PageProps) {
           </p>
         </header>
 
-        <div
-          className="prose prose-lg prose-invert max-w-none"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
+<div className="prose prose-lg prose-invert max-w-none whitespace-pre-line">
+  {post.content}
+</div>
       </article>
     </div>
   )

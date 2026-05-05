@@ -113,9 +113,11 @@ export default function Footer() {
           <Settings className="w-3 h-3" />
         </Link>
         <span>
-          © {new Date().getFullYear()} {siteConfig.nome}
-          {siteConfig.copyrightTagline ? ` — ${siteConfig.copyrightTagline}` : ""}
-        </span>
+  © {new Date().getFullYear()} {siteConfig.nome}
+  {siteConfig.copyrightTagline && (
+    <> — {siteConfig.copyrightTagline}</>
+  )}
+</span>
       </div>
 
     </footer>

@@ -181,7 +181,7 @@ model PostSEO {
 model CustomPage {
   id        String @id @default(cuid())
 
-  slug      String   // "sobre" | "personalizados"
+  slug      String   // "sobre" | "personalizado"
   title     String
 
   // SOBRE

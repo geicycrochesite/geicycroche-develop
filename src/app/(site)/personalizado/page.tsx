@@ -1,3 +1,4 @@
+//src/app/(site)/personalizado/page.tsx
 import { prisma } from "@/core/lib/prisma"
 import { notFound } from "next/navigation"
 
@@ -9,7 +10,7 @@ type FAQItem = {
 async function getPage() {
   return prisma.customPage.findUnique({
     where: {
-        slug: "personalizados"
+        slug: "personalizado"
     }
   })
 }
@@ -18,7 +19,7 @@ export default async function PersonalizadosPage() {
   const page = await getPage()
   if (!page) return notFound()
 
-  const faqs = (page.faq as FAQItem[]) || []
+  const faqs = Array.isArray(page.faq) ? page.faq as FAQItem[] : []
 
   return (
     <div className="max-w-4xl mx-auto py-10 space-y-8 bg-[var(--color-bg-primary)] text-[var(--color-text-primary)] min-h-screen">

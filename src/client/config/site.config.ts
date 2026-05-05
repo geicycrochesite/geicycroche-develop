@@ -1,105 +1,125 @@
 // src/client/config/site.config.ts
-// ⚠️ PREENCHA ESSES DADOS PARA CADA CLIENTE
 
 export const siteConfig = {
-  nome: "Nome do Negócio",
+  nome: "Geicy Crochê",
 
   // Logo
-  logoHorizontal: "/logo-horizontal.png",
-  logoVertical: "/logo-vertical.png",
-  logoAlt: "Logo do negócio",
+  logoHorizontal: "/logo-geicy-croche-horizontal.png",
+  logoVertical: "/logo-geicy-croche-vertical.png",
+  logoAlt: "Geicy Crochê",
 
-  // WhatsApp
-  whatsapp: "5521999999999",
-  whatsappDisplay: "(21) 99999-9999",
-  whatsappMensagem: "Olá! Vim pelo site e gostaria de mais informações.",
+  // WhatsApp (PEGUEI DA IMAGEM)
+  whatsapp: "5521986483118",
+  whatsappDisplay: "(21) 98648-3118",
+  whatsappMensagem: "Olá! Vim pelo site e gostaria de fazer uma encomenda.",
 
   // Header
-  headerCta: "Fale conosco",
+  headerCta: "Peça sob encomenda",
 
-  // Redes sociais
-  instagram: "@instagram",
+  // Redes sociais (não apareceu na imagem)
+  instagram: "",
   facebook: "",
   tiktok: "",
 
-  cidade: "Cidade, Estado",
+  cidade: "Rio de Janeiro, RJ",
 
   // Navegação desktop
   navLinks: [
-    { label: "Início",   href: "/" },
-    { label: "Sobre",    href: "/sobre" },
-    { label: "Loja",     href: "/loja" },
-    { label: "Blog",     href: "/blog" },
-    { label: "Contato",  href: "/contato" },
+    { label: "Início", href: "/" },
+    { label: "Sobre", href: "/sobre" },
+    { label: "Loja", href: "/loja" },
+    { label: "Contato", href: "/contato" },
   ],
 
   // Navegação mobile
   mobileNavLinks: [
-    { label: "Início",   href: "/" },
-    { label: "Sobre",    href: "/sobre" },
-    { label: "Loja",     href: "/loja" },
+    { label: "Início", href: "/" },
+    { label: "Sobre", href: "/sobre" },
+    { label: "Loja", href: "/loja" },
     { label: "Carrinho", href: "/loja/carrinho" },
-    { label: "Contato",  href: "/contato" },
+    { label: "Contato", href: "/contato" },
   ],
 
-  // Footer — benefícios
+  // Footer — benefícios (EXATAMENTE DA IMAGEM)
   benefits: [
-    { title: "Benefício 1", description: "Descrição do benefício" },
-    { title: "Benefício 2", description: "Descrição do benefício" },
-    { title: "Benefício 3", description: "Descrição do benefício" },
+    {
+      title: "Feito à Mão",
+      description: "Cada peça com cuidado artesanal",
+    },
+    {
+      title: "Peças Exclusivas",
+      description: "Produção sob encomenda",
+    },
+    {
+      title: "Entrega no Brasil",
+      description: "Envios para todo o país",
+    },
   ],
 
   // Footer — links
   footerNavLinks: [
-    { label: "Início",  href: "/" },
-    { label: "Sobre",   href: "/sobre" },
+    { label: "Início", href: "/" },
+    { label: "Peças em Crochê", href: "/loja" },
+    { label: "Sobre", href: "/sobre" },
     { label: "Contato", href: "/contato" },
   ],
 
-  footerDescription: "Descrição do seu negócio aqui.",
-  copyrightTagline: "",
+  footerDescription:
+    "Crochê artesanal com estilo e elegância. Peças feitas à mão sob encomenda, incluindo roupas, acessórios e itens para casa.",
 
-    seo: {
-    titulo: "Nome do Negócio – Slogan curto",
-    descricao: "Descrição do negócio...",
-    url: "https://www.seudominio.com.br",
-    ogImage: "/og-image.png",        // ← adicionar
-    keywords: [                       // ← adicionar
-        "palavra-chave 1",
-        "palavra-chave 2",
+  copyrightTagline:
+    "Crochê com Estilo e Elegância",
+
+  seo: {
+    titulo: "Geicy Crochê – Crochê com Estilo e Elegância",
+    descricao:
+      "Peças exclusivas em crochê feitas à mão. Roupas, acessórios e itens para casa com qualidade e sofisticação.",
+    url: "https://geicycroche.com.br",
+    ogImage: "/og-image.png",
+    keywords: [
+      "crochê",
+      "crochê artesanal",
+      "roupas em crochê",
+      "acessórios em crochê",
+      "crochê sob encomenda",
     ],
-    },
+  },
 
-  // ─── TEMA VISUAL ────────────────────────────────────────
- theme: {
-    bgPrimary:       "#000000",
-    bgSecondary:     "#0B0B0B",
-    bgTertiary:      "#111111",
-    bgCard:          "#1a1a1a",
-    bgHover:         "#222222",
-    overlay:         "#0A0A0F",
+  // 🎨 TEMA 100% BASEADO NA IMAGEM
+  theme: {
+    // BACKGROUND
+    bgPrimary: "#000000",
+    bgSecondary: "#0B0B0B",
+    bgTertiary: "#111111",
+    bgCard: "#1a1a1a",
+    bgHover: "#222222",
+    overlay: "#0A0A0F",
 
-    textPrimary:     "#ffffff",    
-    textSecondary:   "#e2e8f0",   
-    textTertiary:    "#94a3b8",   
-    textMuted:       "#9ca3af",
-    textLight:       "#ffffff",
-    textHeroMuted:   "#d1d5db",
+    // TEXT (AJUSTADO PRO BEGE DA IMAGEM)
+    textPrimary: "#EADCC6",
+    textSecondary: "#D6C7A8",
+    textTertiary: "#B8A98A",
+    textMuted: "#CFC2A8",
+    textLight: "#ffffff",
+    textHeroMuted: "#D6C7A8",
 
-    accent:          "#6C63FF",
-    accentHover:     "#5A52E0",
-    accentLight:     "#A78BFA",
+    // ACCENT (DOURADO)
+    accent: "#C8A96A",
+    accentHover: "#B89A5A",
+    accentLight: "#EADCC6",
 
-    error:           "#dc2626",
-    success:         "#16a34a",
-    info:            "#6C63FF",
+    // STATUS
+    error: "#dc2626",
+    success: "#16a34a",
+    info: "#C8A96A",
 
-    border:          "#333333",
-    borderLight:     "#444444",
+    // BORDER
+    border: "#333333",
+    borderLight: "#444444",
 
-    adminBg:         "#1a1a1a",
-    adminText:       "#ffffff",   
-    adminBorder:     "#333333",
-},
-
-}
+    // ADMIN
+    adminBg: "#1a1a1a",
+    adminText: "#EADCC6",
+    adminBorder: "#333333",
+  },
+};

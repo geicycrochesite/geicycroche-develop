@@ -1,3 +1,5 @@
+
+//src/core/components/admin/PageForm.tsx
 'use client'
 
 import { useState } from 'react'
@@ -169,7 +171,7 @@ export default function PageForm({ page }: Props) {
         </section>
 
         {/* FAQ */}
-        {page.slug === 'personalizados' && (
+        {page.slug === 'personalizado' && (
           <section className="rounded-3xl border border-[var(--color-admin-border)] bg-[var(--color-admin-bg)] p-6 shadow-sm">
             <h2 className="text-lg font-semibold">FAQ</h2>
 
