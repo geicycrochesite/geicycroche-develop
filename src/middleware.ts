@@ -34,7 +34,6 @@ export function middleware(req: NextRequest) {
   // só verifica existência do cookie (SEM JWT VERIFY AQUI)
   const token = req.cookies.get(AUTH_COOKIE_NAME)?.value
 
-  console.log("MIDDLEWARE TOKEN:", token)
 
   if (!token) {
     return redirectToLogin(req)

@@ -43,7 +43,7 @@ export default async function LojaPage() {
               {/* INFOS */}
               <div className="p-2 md:p-4 flex flex-col flex-1">
                 <h2 className="text-sm md:text-xl font-semibold line-clamp-2"
-                  style={{ color: 'var(--color-accent)' }}>
+                  style={{ color: 'var(--color-textPrimary)' }}>
                   {product.name}
                 </h2>
 

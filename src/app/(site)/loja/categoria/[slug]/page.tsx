@@ -1,7 +1,9 @@
+// app/loja/categoria/[slug]/page.tsx
+import Link from 'next/link'
+import Image from 'next/image'
+import { notFound } from 'next/navigation'
 import { prisma } from '@/core/lib/prisma'
 import { Prisma } from '@/generated/client'
-import { notFound } from 'next/navigation'
-import Link from 'next/link'
 
 interface CategoriaPageProps {
   params: Promise<{ slug: string }>
@@ -15,70 +17,138 @@ type ProductWithRelations = Prisma.ProductGetPayload<{
   }
 }>
 
-export default async function CategoriaPage({ params }: CategoriaPageProps) {
-  const { slug } = await params
-
-  let produtos: ProductWithRelations[] = []
-  let categoriaNome = ''
-
+async function getProdutosByCategoriaSlug(
+  slug: string
+): Promise<{ produtos: ProductWithRelations[]; categoriaNome: string }> {
   if (slug === 'todos') {
-    produtos = await prisma.product.findMany({
+    const produtos = await prisma.product.findMany({
       include: {
         colors: true,
         sizes: true,
-        images: { orderBy: { createdAt: 'desc' } }
+        images: { orderBy: { createdAt: 'desc' } },
       },
-      orderBy: { createdAt: 'desc' }
-    })
-    categoriaNome = 'Todos os Produtos'
-  } else {
-    const categoria = await prisma.category.findUnique({
-      where: { slug },
-      include: {
-        products: {
-          include: {
-            colors: true,
-            sizes: true,
-            images: { orderBy: { createdAt: 'desc' } },
-          },
-        },
-      },
+      orderBy: { createdAt: 'desc' },
     })
 
-    if (!categoria) return notFound()
-
-    produtos = categoria.products
-    categoriaNome = categoria.name
+    return {
+      produtos,
+      categoriaNome: 'Todos os Produtos',
+    }
   }
 
-  return (
-    <section className="max-w-7xl mx-auto py-8 px-4">
-      <h1 className="text-2xl font-bold mb-6">Categoria: {categoriaNome}</h1>
+  const categoria = await prisma.category.findUnique({
+    where: { slug },
+    include: {
+      products: {
+        include: {
+          colors: true,
+          sizes: true,
+          images: { orderBy: { createdAt: 'desc' } },
+        },
+        orderBy: { createdAt: 'desc' },
+      },
+    },
+  })
 
-      {produtos.length === 0 ? (
-        <p>Nenhum produto encontrado nesta categoria.</p>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {produtos.map((product) => (
-            <Link
-              key={product.id}
-              href={`/loja/produto/${product.slug}`}
-              className="border rounded p-4 hover:shadow-lg transition"
+  if (!categoria) {
+    return { produtos: [], categoriaNome: '' }
+  }
+
+  return {
+    produtos: categoria.products,
+    categoriaNome: categoria.name,
+  }
+}
+
+export default async function CategoriaPage({ params }: CategoriaPageProps) {
+  const { slug } = await params
+
+  const { produtos, categoriaNome } = await getProdutosByCategoriaSlug(slug)
+
+  if (!categoriaNome) return notFound()
+
+  return (
+    <main>
+      <section className="px-4 py-6 md:px-20 md:py-20">
+        <header className="max-w-6xl mx-auto mb-8 md:mb-10">
+          <h1
+            className="text-2xl md:text-4xl leading-tight mb-2"
+            style={{
+              color: 'var(--color-text-primary)',
+              fontFamily: 'var(--font-logo)',
+            }}
+          >
+            {categoriaNome}
+          </h1>
+        </header>
+
+        {produtos.length === 0 ? (
+          <div className="max-w-6xl mx-auto">
+            <p
+              className="text-sm md:text-base"
+              style={{
+                color: 'var(--color-text-secondary)',
+                fontFamily: 'var(--font-body)',
+              }}
             >
-              <img
-                src={product.images?.[0]?.url || '/logo-artesanaio.jpeg'}
-                alt={product.name}
-                className="w-full h-120 object-cover mb-2 rounded"
-              />
-              <h2 className="font-semibold text-lg">{product.name}</h2>
-              <p className="text-gray-600">R$ {product.price.toFixed(2)}</p>
-              <button className="bg-green-600 px-8 py-2 m-4 rounded-xl text-center font-bold text-white">
-                VER DETALHES
-              </button>
+              Nenhum produto encontrado nesta categoria.
+            </p>
+
+            <Link
+              href="/loja"
+              className="inline-flex mt-4 px-5 py-3 rounded-full text-xs md:text-sm uppercase tracking-[0.18em] transition"
+              style={{
+                border: '1px solid var(--color-border)',
+                backgroundColor: 'var(--color-bg-card)',
+                color: 'var(--color-text-primary)',
+                fontFamily: 'var(--font-heading)',
+              }}
+            >
+              Ver todos os produtos
             </Link>
-          ))}
-        </div>
-      )}
-    </section>
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto">
+            {produtos.map((product) => {
+              const image = product.images?.[0]?.url || '/placeholder.png'
+
+              return (
+                <Link
+                  key={product.id}
+                  href={`/loja/produto/${product.slug}`}
+                  className="bg-white shadow-lg rounded-xl overflow-hidden hover:scale-105 transition flex flex-col"
+                >
+                  <div className="w-full aspect-square md:aspect-auto md:h-72 relative">
+                    <Image
+                      src={image}
+                      alt={product.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+
+                  <div className="p-2 md:p-4 flex flex-col flex-1">
+                    <h2
+                      className="text-sm md:text-xl font-semibold line-clamp-2"
+                      style={{ color: 'var(--color-textPrimary)' }}
+                    >
+                      {product.name}
+                    </h2>
+
+                    <p className="text-green-700 font-bold text-sm md:text-lg mt-1">
+                      R$ {Number(product.price).toFixed(2)}
+                    </p>
+
+                    <button className="bg-green-600 w-full mt-auto py-1 md:py-2 rounded-lg text-xs md:text-sm font-bold text-white md:mt-3">
+                      VER DETALHES
+                    </button>
+                  </div>
+                </Link>
+              )
+            })}
+          </div>
+        )}
+      </section>
+    </main>
   )
 }

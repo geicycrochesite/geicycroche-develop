@@ -1,4 +1,3 @@
-//src/app/(site)/personalizado/page.tsx
 import { prisma } from "@/core/lib/prisma"
 import { notFound } from "next/navigation"
 
@@ -19,7 +18,7 @@ export default async function PersonalizadosPage() {
   const page = await getPage()
   if (!page) return notFound()
 
-  const faqs = Array.isArray(page.faq) ? page.faq as FAQItem[] : []
+  const faqs = (page.faq as FAQItem[]) || []
 
   return (
     <div className="max-w-4xl mx-auto py-10 space-y-8 bg-[var(--color-bg-primary)] text-[var(--color-text-primary)] min-h-screen">
@@ -33,8 +32,8 @@ export default async function PersonalizadosPage() {
       <div className="space-y-4">
         {faqs.map((item: any, i: number) => (
           <div key={i} className="border border-[var(--color-border)] rounded-2xl p-4 bg-[var(--color-bg-card)]">
-            <h2 className="font-semibold">{item.question}</h2>
-            <p className="text-[var(--color-text-secondary)] mt-2">{item.answer}</p>
+            <h2 className="font-semibold">{item.pergunta}</h2>
+            <p className="text-[var(--color-text-secondary)] mt-2">{item.resposta}</p>
           </div>
         ))}
       </div>
