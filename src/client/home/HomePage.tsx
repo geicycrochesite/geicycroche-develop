@@ -16,7 +16,7 @@ export default async function HomePage() {
       className="w-full"
       style={{
         backgroundColor: "var(--color-bg-primary)",
-        color: "var(--color-text-primary)",
+        color: "var(--color-text-secondary)",
       }}
     >
 

@@ -29,7 +29,7 @@ export default function Header() {
         {/* Desktop */}
         <nav
           className="hidden md:flex gap-8 text-sm"
-          style={{ color: 'var(--color-text-primary)' }}
+          style={{ color: 'var(--color-text-secondary)' }}
         >
           {siteConfig.navLinks.map((link) => (
             <Link key={link.href} href={link.href}>{link.label}</Link>
@@ -76,12 +76,12 @@ export default function Header() {
           <Link
             href="/loja"
             className="text-sm font-semibold"
-            style={{ color: 'var(--color-text-primary)' }}
+            style={{ color: 'var(--color-text-secondary)' }}
           >
             Loja
           </Link>
           <Link href="/loja/carrinho" className="relative">
-            <ShoppingCart className="w-5 h-5" style={{ color: 'var(--color-text-primary)' }} />
+            <ShoppingCart className="w-5 h-5" style={{ color: 'var(--color-text-secondary)' }} />
             {totalItems > 0 && (
               <span
                 className="absolute -top-2 -right-2 h-4 min-w-[1rem] flex items-center justify-center rounded-full px-1 text-[0.6rem] font-bold"
@@ -94,7 +94,7 @@ export default function Header() {
           <button
             onClick={() => setOpen(!open)}
             aria-label="Abrir menu"
-            style={{ color: 'var(--color-text-primary)' }}
+            style={{ color: 'var(--color-text-secondary)' }}
           >
             {open ? <X /> : <Menu />}
           </button>
@@ -106,7 +106,7 @@ export default function Header() {
           className="md:hidden px-6 pb-6 flex flex-col gap-4"
           style={{
             backgroundColor: 'var(--color-bg-primary)',
-            color: 'var(--color-text-primary)',
+            color: 'var(--color-text-secondary)',
           }}
         >
           {siteConfig.mobileNavLinks.map((link) => (
