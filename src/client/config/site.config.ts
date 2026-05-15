@@ -96,7 +96,7 @@ export const siteConfig = {
     overlay: "#0A0A0F",
 
     // TEXT (AJUSTADO PRO BEGE DA IMAGEM)
-    textPrimary: "#0B0B0B",
+    textPrimary: "#9b7d3c",
     textSecondary: "#D6C7A8",
     textTertiary: "#B8A98A",
     textMuted: "#CFC2A8",
