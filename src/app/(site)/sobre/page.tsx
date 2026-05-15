@@ -39,6 +39,7 @@ export default async function SobrePage() {
         </p>
       </div>
 
+
     </div>
-  )
+  ) 
 }
