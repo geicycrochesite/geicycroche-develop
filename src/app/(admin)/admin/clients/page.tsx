@@ -1,3 +1,4 @@
+// app/(admin)/admin/clients/page.tsx
 'use client'
 
 import { useState, FormEvent } from 'react'
@@ -17,18 +18,19 @@ export default function AdminClientsPage() {
     const payload = {
       name: String(formData.get('name') || '').trim(),
       email: String(formData.get('email') || '').trim(),
-      cpfCnpj: String(formData.get('cpfCnpj') || '').trim(),
+      cpf: String(formData.get('cpf') || '').trim(),
+      birthDate: String(formData.get('birthDate') || '').trim(),
       phone: String(formData.get('phone') || '').trim(),
     }
 
-    if (!payload.name || !payload.email) {
-      setError('Nome e email são obrigatórios.')
+    if (!payload.name || !payload.email || !payload.cpf || !payload.birthDate) {
+      setError('Nome, email, CPF e data de nascimento são obrigatórios.')
       setIsSubmitting(false)
       return
     }
 
     try {
-      const response = await fetch('/api/clients', {
+      const response = await fetch('/api/asaas/create-customer', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -38,7 +40,7 @@ export default function AdminClientsPage() {
 
       if (!response.ok) {
         const body = await response.json().catch(() => null)
-        setError(body?.error || 'Erro ao criar cliente')
+        setError(body?.details?.join(' | ') || body?.error || 'Erro ao criar cliente')
         return
       }
 
@@ -85,15 +87,28 @@ export default function AdminClientsPage() {
 
         <div className="grid gap-4 sm:grid-cols-2">
           <label className="block text-sm font-medium text-slate-700">
-            CPF/CNPJ
+            CPF
             <input
-              name="cpfCnpj"
+              name="cpf"
               type="text"
               autoComplete="off"
               className="mt-2 w-full rounded-2xl border border-slate-300 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-slate-400"
+              required
             />
           </label>
 
+          <label className="block text-sm font-medium text-slate-700">
+            Data de nascimento
+            <input
+              name="birthDate"
+              type="date"
+              className="mt-2 w-full rounded-2xl border border-slate-300 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-slate-400"
+              required
+            />
+          </label>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-2">
           <label className="block text-sm font-medium text-slate-700">
             Telefone
             <input

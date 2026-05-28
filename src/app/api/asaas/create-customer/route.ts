@@ -7,6 +7,7 @@
  *   name: string (required)
  *   email: string (required)
  *   cpf: string (required, 11 digits)
+ *   birthDate: string (required, YYYY-MM-DD)
  *   phone?: string
  *   address?: {
  *     street: string
@@ -33,6 +34,10 @@ const createCustomerSchema = yup.object({
     .string()
     .required('CPF é obrigatório')
     .matches(/^\d{11}$/, 'CPF deve conter 11 dígitos sem formatação'),
+  birthDate: yup
+    .string()
+    .required('Data de nascimento é obrigatória')
+    .matches(/^\d{4}-\d{2}-\d{2}$/, 'Data de nascimento deve estar no formato YYYY-MM-DD'),
   phone: yup.string().matches(/^\d{10,11}$/, 'Telefone deve conter 10 ou 11 dígitos'),
   address: yup.object({
     street: yup.string(),
@@ -71,6 +76,7 @@ export async function POST(req: NextRequest) {
       name: validatedData.name.trim(),
       email: validatedData.email.trim(),
       cpfCnpj: cpfClean,
+      birthDate: validatedData.birthDate,
     };
     
     if (phoneClean) {
@@ -95,6 +101,7 @@ export async function POST(req: NextRequest) {
       name: payload.name,
       email: payload.email,
       document: cpfClean,
+      birthDate: payload.birthDate,
     });
     
     // Create customer in Asaas
