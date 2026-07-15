@@ -9,8 +9,7 @@
     "lint": "next lint",
     "seed": "tsx prisma/seed.ts",
     "seedb": "tsx prisma/seedblog.ts",
-    "seedcp": "tsx prisma/seedpages.ts",
-    "seedp": "tsx prisma/seed-produtos.ts"
+    "seedp": "tsx prisma/seedProdutos.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.0",
@@ -41,6 +40,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@serwist/turbopack": "^9.5.11",
     "@tailwindcss/postcss": "^4",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^20",
@@ -48,8 +48,10 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/react-input-mask": "^3.0.6",
+    "esbuild": "^0.28.1",
     "eslint": "^9",
     "eslint-config-next": "15.3.3",
+    "serwist": "^9.5.11",
     "tailwindcss": "^4",
     "tsx": "^4.21.0",
     "typescript": "^5.8.3"
