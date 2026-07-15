@@ -89,7 +89,7 @@ export const siteConfig = {
   pwa: {
   enabled: true,
 
-  shortName: "Nome do Negócio",
+  shortName: "Geicy Crochê",
 
   orientation: "any" as const,
 
