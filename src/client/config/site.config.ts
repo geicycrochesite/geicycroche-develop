@@ -85,6 +85,27 @@ export const siteConfig = {
     ],
   },
 
+   // ─── Instalação Off-Line do site no tablet ────────────────────────────────────────
+  pwa: {
+  enabled: true,
+
+  shortName: "Nome do Negócio",
+
+  orientation: "any" as const,
+
+  icon192: "/pwa/icon-192.png",
+  icon512: "/pwa/icon-512.png",
+  maskableIcon512: "/pwa/icon-maskable-512.png",
+  appleTouchIcon: "/pwa/apple-touch-icon.png",
+
+  offlineRoutes: [
+    "/",
+    "/sobre",
+    "/loja",
+    "/blog",
+  ],
+},
+
   // 🎨 TEMA 100% BASEADO NA IMAGEM
   theme: {
     // BACKGROUND
