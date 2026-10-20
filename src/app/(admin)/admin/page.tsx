@@ -1,3 +1,4 @@
+import CreateProductLink from '@/core/components/admin/CreateProductLink'
 // src/app/(admin)/admin/page.tsx
 import { prisma } from '@/core/lib/prisma'
 import { subDays, format, eachDayOfInterval } from 'date-fns'
@@ -77,8 +78,9 @@ export default async function AdminPage() {
 
   return (
     <div className="space-y-6">
+        <CreateProductLink />
       <div>
-        <h2 className="text-2xl font-bold">Dashboard</h2>
+        <h2 className="text-2xl font-bold">Início</h2>
         <p className="text-[var(--color-text-secondary)]">
           Visão geral dos últimos 30 dias
         </p>

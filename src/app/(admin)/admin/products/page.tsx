@@ -1,3 +1,4 @@
+import CreateProductLink from '@/core/components/admin/CreateProductLink'
 // src/app/(admin)/admin/products/page.tsx
 
 import Link from 'next/link'
@@ -39,12 +40,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
           </p>
         </div>
 
-        <Link
-          href="/admin/products/new"
-          className="inline-flex items-center justify-center rounded-3xl bg-[var(--color-bg-primary)] px-5 py-3 text-sm font-semibold text-[var(--color-text-primary)] transition hover:bg-[var(--color-bg-hover)]"
-        >
-          + Novo produto
-        </Link>
+        <CreateProductLink />
       </div>
 
       <div className="overflow-hidden rounded-3xl border border-[var(--color-admin-border)] bg-[var(--color-admin-bg)] shadow-sm">

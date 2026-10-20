@@ -8,7 +8,9 @@ function createPrismaClient() {
   const pool = new Pool({
     connectionString: process.env.DATABASE_URL!,
   })
-  const adapter = new PrismaPg(pool)
+  // Explicit schema is necessary with adapter-pg (used by isolated PostgreSQL tests).
+  const schema = new URL(process.env.DATABASE_URL!).searchParams.get('schema') ?? undefined
+  const adapter = new PrismaPg(pool, { schema, disposeExternalPool: true })
   return new PrismaClient({ adapter })
 }
 

@@ -16,6 +16,7 @@ export default function CheckoutForm() {
   const { items, clearCart } = useCart()
   const router = useRouter()
   const [frete, setFrete] = useState<number | null>(null)
+  const [quoteToken, setQuoteToken] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const {
@@ -45,7 +46,7 @@ export default function CheckoutForm() {
         const data = await res.json()
         if (Array.isArray(data) && data.length > 0) {
           const melhor = data[0]
-          setFrete(Number(melhor.price))
+          setFrete(Number(melhor.price)); setQuoteToken(melhor.quoteToken)
         } else {
           setFrete(null)
         }
@@ -68,7 +69,7 @@ export default function CheckoutForm() {
       return
     }
 
-    if (!frete) {
+    if (frete === null || !quoteToken) {
       toast.error('Calcule o frete antes de finalizar.')
       return
     }
@@ -80,7 +81,7 @@ export default function CheckoutForm() {
       // Criação do pedido
       const res = await fetch('/api/orders', {
         method: 'POST',
-        body: JSON.stringify({ ...data, items, frete }),
+        body: JSON.stringify({ ...data, items, frete, quoteToken }),
         headers: { 'Content-Type': 'application/json' },
       })
 
@@ -287,7 +288,7 @@ export default function CheckoutForm() {
           {/* BOTÃO */}
           <button
             type="submit"
-            disabled={isSubmitting || !frete}
+            disabled={isSubmitting || frete === null || !quoteToken}
             className="w-full bg-[var(--color-accent)] text-[var(--color-text-primary)] px-5 py-3 text-sm font-semibold rounded-3xl hover:bg-[var(--color-accent-hover)] transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {isSubmitting ? (

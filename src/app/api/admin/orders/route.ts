@@ -1,14 +1,17 @@
+import type { Prisma } from '@/generated/client'
+import { withModuleApi } from '@/core/lib/module-server'
+import { withAdmin } from '@/core/lib/admin-access'
 import { NextResponse } from 'next/server'
 import { prisma } from '@/core/lib/prisma'
 
-export async function GET(request: Request) {
+const GET = withAdmin(async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   const status = searchParams.get('status') || ''
   const search = searchParams.get('search') || ''
   const page = Number(searchParams.get('page') || '1')
   const perPage = Number(searchParams.get('perPage') || '10')
 
-  const where: any = {}
+  const where: Prisma.OrderWhereInput = {}
 
   if (status && status !== 'ALL') {
     where.statusPagamento = status
@@ -29,4 +32,7 @@ export async function GET(request: Request) {
   ])
 
   return NextResponse.json({ total, page, perPage, orders })
-}
+})
+
+const moduleGET = withModuleApi('/api/admin/orders', GET)
+export { moduleGET as GET }

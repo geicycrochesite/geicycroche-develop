@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import { prisma } from '@/core/lib/prisma'
 
 type Params = {
-  params: { id: string } | Promise<{ id: string }>
+  params: Promise<{ id: string }>
 }
 
 /* UPDATE */

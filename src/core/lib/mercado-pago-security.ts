@@ -1,37 +1,4 @@
-import { createHmac } from 'crypto'
-
-export function validateMercadoPagoSignature(
-  body: string,
-  signature: string | undefined,
-  secret: string | undefined
-): boolean {
-  if (!secret) {
-    console.warn('[MP-SECURITY] MERCADO_PAGO_WEBHOOK_SECRET não configurado. Aceitando webhook (dev mode)')
-    return true
-  }
-
-  if (!signature) {
-    console.warn('[MP-SECURITY] Header x-signature ausente. Rejeitando webhook.')
-    return false
-  }
-
-  try {
-    const hash = createHmac('sha256', secret).update(body).digest('hex')
-    const isValid = hash === signature
-
-    if (!isValid) {
-      console.error('[MP-SECURITY] Assinatura inválida!', {
-        expected: hash,
-        received: signature,
-      })
-    }
-
-    return isValid
-  } catch (error) {
-    console.error('[MP-SECURITY] Erro ao validar assinatura:', error)
-    return false
-  }
-}
+export { verifyMercadoPagoWebhook as validateMercadoPagoSignature } from './commerce-security'
 
 export async function fetchMercadoPagoPayment(
   paymentId: string,
@@ -44,8 +11,10 @@ export async function fetchMercadoPagoPayment(
 
   try {
     const response = await fetch(
-      `https://api.mercadopago.com/v1/payments/${paymentId}`,
+      `https://api.mercadopago.com/v1/payments/${encodeURIComponent(paymentId)}`,
       {
+        cache: 'no-store',
+        signal: AbortSignal.timeout(15_000),
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },

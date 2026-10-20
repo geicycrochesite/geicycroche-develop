@@ -64,7 +64,14 @@ export const ModelName = {
   BlogCategory: 'BlogCategory',
   Post: 'Post',
   PostSEO: 'PostSEO',
-  CustomPage: 'CustomPage'
+  CustomPage: 'CustomPage',
+  PaymentSettings: 'PaymentSettings',
+  MercadoPagoAccount: 'MercadoPagoAccount',
+  MercadoPagoOAuthAttempt: 'MercadoPagoOAuthAttempt',
+  MercadoPagoPayment: 'MercadoPagoPayment',
+  MercadoPagoWebhookEvent: 'MercadoPagoWebhookEvent',
+  UpnodeCommissionEntry: 'UpnodeCommissionEntry',
+  UpnodeWeeklyStatement: 'UpnodeWeeklyStatement'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -139,6 +146,7 @@ export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typ
 
 
 export const OrderScalarFieldEnum = {
+  paymentProvider: 'paymentProvider',
   id: 'id',
   fullName: 'fullName',
   email: 'email',
@@ -263,6 +271,109 @@ export const CustomPageScalarFieldEnum = {
 } as const
 
 export type CustomPageScalarFieldEnum = (typeof CustomPageScalarFieldEnum)[keyof typeof CustomPageScalarFieldEnum]
+
+
+export const PaymentSettingsScalarFieldEnum = {
+  id: 'id',
+  provider: 'provider',
+  accountId: 'accountId',
+  creditCents: 'creditCents'
+} as const
+
+export type PaymentSettingsScalarFieldEnum = (typeof PaymentSettingsScalarFieldEnum)[keyof typeof PaymentSettingsScalarFieldEnum]
+
+
+export const MercadoPagoAccountScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  label: 'label',
+  publicKey: 'publicKey',
+  access: 'access',
+  refresh: 'refresh',
+  expiresAt: 'expiresAt',
+  confirmedAt: 'confirmedAt',
+  createdAt: 'createdAt'
+} as const
+
+export type MercadoPagoAccountScalarFieldEnum = (typeof MercadoPagoAccountScalarFieldEnum)[keyof typeof MercadoPagoAccountScalarFieldEnum]
+
+
+export const MercadoPagoOAuthAttemptScalarFieldEnum = {
+  hash: 'hash',
+  sessionHash: 'sessionHash',
+  verifier: 'verifier',
+  expiresAt: 'expiresAt'
+} as const
+
+export type MercadoPagoOAuthAttemptScalarFieldEnum = (typeof MercadoPagoOAuthAttemptScalarFieldEnum)[keyof typeof MercadoPagoOAuthAttemptScalarFieldEnum]
+
+
+export const MercadoPagoPaymentScalarFieldEnum = {
+  id: 'id',
+  orderId: 'orderId',
+  accountId: 'accountId',
+  requestKey: 'requestKey',
+  fingerprint: 'fingerprint',
+  requestBody: 'requestBody',
+  method: 'method',
+  totalCents: 'totalCents',
+  providerId: 'providerId',
+  status: 'status',
+  detail: 'detail',
+  reversed: 'reversed',
+  qrCode: 'qrCode',
+  qrImage: 'qrImage',
+  checkedAt: 'checkedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type MercadoPagoPaymentScalarFieldEnum = (typeof MercadoPagoPaymentScalarFieldEnum)[keyof typeof MercadoPagoPaymentScalarFieldEnum]
+
+
+export const MercadoPagoWebhookEventScalarFieldEnum = {
+  key: 'key',
+  resourceId: 'resourceId',
+  userId: 'userId',
+  status: 'status',
+  attempts: 'attempts',
+  receivedAt: 'receivedAt',
+  processedAt: 'processedAt'
+} as const
+
+export type MercadoPagoWebhookEventScalarFieldEnum = (typeof MercadoPagoWebhookEventScalarFieldEnum)[keyof typeof MercadoPagoWebhookEventScalarFieldEnum]
+
+
+export const UpnodeCommissionEntryScalarFieldEnum = {
+  key: 'key',
+  orderId: 'orderId',
+  kind: 'kind',
+  cents: 'cents',
+  salesCents: 'salesCents',
+  refundCents: 'refundCents',
+  statementId: 'statementId',
+  createdAt: 'createdAt'
+} as const
+
+export type UpnodeCommissionEntryScalarFieldEnum = (typeof UpnodeCommissionEntryScalarFieldEnum)[keyof typeof UpnodeCommissionEntryScalarFieldEnum]
+
+
+export const UpnodeWeeklyStatementScalarFieldEnum = {
+  id: 'id',
+  start: 'start',
+  end: 'end',
+  salesCents: 'salesCents',
+  refundCents: 'refundCents',
+  feesCents: 'feesCents',
+  adjustments: 'adjustments',
+  openingCredit: 'openingCredit',
+  closingCredit: 'closingCredit',
+  dueCents: 'dueCents',
+  status: 'status',
+  createdAt: 'createdAt'
+} as const
+
+export type UpnodeWeeklyStatementScalarFieldEnum = (typeof UpnodeWeeklyStatementScalarFieldEnum)[keyof typeof UpnodeWeeklyStatementScalarFieldEnum]
 
 
 export const SortOrder = {

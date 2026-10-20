@@ -1,3 +1,4 @@
+import { verifyAdminToken } from '@/core/lib/auth-token'
 // src/middleware.ts
 
 import { NextResponse, type NextRequest } from 'next/server'
@@ -18,8 +19,12 @@ function redirectToLogin(req: NextRequest) {
   return NextResponse.redirect(url)
 }
 
-export function middleware(req: NextRequest) {
+export async function middleware(req: NextRequest) {
   const pathname = req.nextUrl.pathname
+  if ((pathname.startsWith('/admin') || pathname.startsWith('/api/admin')) && !['/admin/login','/admin/setup-admin'].includes(pathname)) {
+    const session = await verifyAdminToken(req.cookies.get('auth_token')?.value ?? '')
+    if (!session || session.role !== 'admin') return pathname.startsWith('/api/') ? NextResponse.json({ error: 'Acesso negado' }, { status: 401 }) : NextResponse.redirect(new URL('/admin/login', req.url))
+  }
 
   // libera tudo fora do admin/api admin
   if (!pathname.startsWith('/admin') && !pathname.startsWith('/api/admin')) {

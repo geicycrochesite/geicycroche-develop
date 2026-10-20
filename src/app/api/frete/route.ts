@@ -1,3 +1,4 @@
+import { signShippingQuote } from '@/core/lib/commerce-security'
 // src/app/api/frete/route.ts
 import { NextResponse } from 'next/server'
 
@@ -68,6 +69,7 @@ export async function POST(request: Request) {
         id: service.id,
         name: service.name,
         price: Number(service.price).toFixed(2),
+        quoteToken: signShippingQuote(cepDestino.replace(/\D/g, ''), quantidade, Number(service.price).toFixed(2), service.id),
         delivery_time: service.delivery_time,
       }))
 

@@ -87,3 +87,38 @@ export type PostSEO = Prisma.PostSEOModel
  * 
  */
 export type CustomPage = Prisma.CustomPageModel
+/**
+ * Model PaymentSettings
+ * 
+ */
+export type PaymentSettings = Prisma.PaymentSettingsModel
+/**
+ * Model MercadoPagoAccount
+ * 
+ */
+export type MercadoPagoAccount = Prisma.MercadoPagoAccountModel
+/**
+ * Model MercadoPagoOAuthAttempt
+ * 
+ */
+export type MercadoPagoOAuthAttempt = Prisma.MercadoPagoOAuthAttemptModel
+/**
+ * Model MercadoPagoPayment
+ * 
+ */
+export type MercadoPagoPayment = Prisma.MercadoPagoPaymentModel
+/**
+ * Model MercadoPagoWebhookEvent
+ * 
+ */
+export type MercadoPagoWebhookEvent = Prisma.MercadoPagoWebhookEventModel
+/**
+ * Model UpnodeCommissionEntry
+ * 
+ */
+export type UpnodeCommissionEntry = Prisma.UpnodeCommissionEntryModel
+/**
+ * Model UpnodeWeeklyStatement
+ * 
+ */
+export type UpnodeWeeklyStatement = Prisma.UpnodeWeeklyStatementModel
