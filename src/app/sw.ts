@@ -22,6 +22,11 @@ declare global {
 declare const self: ServiceWorkerGlobalScope;
 
 const privateRoutePrefixes = [
+  "/loja/pedido",
+  "/loja/checkout",
+  "/loja/carrinho",
+  "/loja/meus-pedidos",
+  "/minha-conta",
   "/admin",
   "/api",
   "/pedido",
@@ -75,6 +80,7 @@ const serwist = new Serwist({
   runtimeCaching: [
     {
       matcher({ request, url }) {
+        if (["mercadopago.com", "mercadopago.com.br"].some(domain => url.hostname === domain || url.hostname.endsWith(`.${domain}`))) return true;
         if (
           url.origin === self.location.origin &&
           isPrivatePath(url.pathname)

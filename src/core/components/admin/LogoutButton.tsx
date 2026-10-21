@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
-export function LogoutButton() {
+export function LogoutButton({ onLoggedOut }: { onLoggedOut?: () => void }) {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
 
@@ -17,11 +17,12 @@ export function LogoutButton() {
       })
 
       if (response.ok) {
+        onLoggedOut?.()
         router.push('/admin/login')
       } else {
         alert('Erro ao fazer logout. Tente novamente.')
       }
-    } catch (error) {
+    } catch {
       alert('Erro de conexão. Tente novamente.')
     } finally {
       setLoading(false)
@@ -32,9 +33,10 @@ export function LogoutButton() {
     <button
       onClick={handleLogout}
       disabled={loading}
-      className="rounded bg-[var(--color-error)] px-3 py-1 text-[var(--color-text-primary)] hover:bg-[var(--color-error)]/80 disabled:opacity-50"
+      type="button"
+      className="mt-2 flex min-h-12 min-w-11 w-full items-center rounded-xl border border-white/25 px-3 py-3 text-left text-white hover:bg-[var(--color-bg-hover)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:opacity-50"
     >
-      {loading ? 'Saindo...' : 'Logout'}
+      {loading ? 'Saindo...' : 'Sair'}
     </button>
   )
 }

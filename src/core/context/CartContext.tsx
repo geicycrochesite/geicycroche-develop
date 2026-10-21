@@ -33,6 +33,7 @@ const CartContext = createContext<CartContextType | undefined>(undefined)
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([])
+  const [hydrated, setHydrated] = useState(false)
 
   // Carrega do localStorage ao montar
   useEffect(() => {
@@ -40,12 +41,13 @@ export function CartProvider({ children }: { children: ReactNode }) {
     if (stored) {
       setItems(JSON.parse(stored))
     }
+    setHydrated(true)
   }, [])
 
   // Persiste no localStorage sempre que items mudar
   useEffect(() => {
-    localStorage.setItem('loja-roupas-cart', JSON.stringify(items))
-  }, [items])
+    if (hydrated) localStorage.setItem('loja-roupas-cart', JSON.stringify(items))
+  }, [items, hydrated])
 
   const addItem = (newItem: CartItem) => {
     setItems((prev) => {
@@ -58,7 +60,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
       if (existsIndex > -1) {
         const updated = [...prev]
-        updated[existsIndex].quantity += newItem.quantity
+        updated[existsIndex] = { ...prev[existsIndex], quantity: prev[existsIndex].quantity + newItem.quantity }
         return updated
       }
 

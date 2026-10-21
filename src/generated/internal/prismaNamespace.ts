@@ -397,7 +397,14 @@ export const ModelName = {
   BlogCategory: 'BlogCategory',
   Post: 'Post',
   PostSEO: 'PostSEO',
-  CustomPage: 'CustomPage'
+  CustomPage: 'CustomPage',
+  PaymentSettings: 'PaymentSettings',
+  MercadoPagoAccount: 'MercadoPagoAccount',
+  MercadoPagoOAuthAttempt: 'MercadoPagoOAuthAttempt',
+  MercadoPagoPayment: 'MercadoPagoPayment',
+  MercadoPagoWebhookEvent: 'MercadoPagoWebhookEvent',
+  UpnodeCommissionEntry: 'UpnodeCommissionEntry',
+  UpnodeWeeklyStatement: 'UpnodeWeeklyStatement'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -413,7 +420,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "product" | "productImage" | "productColor" | "size" | "category" | "order" | "orderItem" | "adminUser" | "client" | "accessLog" | "blogCategory" | "post" | "postSEO" | "customPage"
+    modelProps: "product" | "productImage" | "productColor" | "size" | "category" | "order" | "orderItem" | "adminUser" | "client" | "accessLog" | "blogCategory" | "post" | "postSEO" | "customPage" | "paymentSettings" | "mercadoPagoAccount" | "mercadoPagoOAuthAttempt" | "mercadoPagoPayment" | "mercadoPagoWebhookEvent" | "upnodeCommissionEntry" | "upnodeWeeklyStatement"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1453,6 +1460,524 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    PaymentSettings: {
+      payload: Prisma.$PaymentSettingsPayload<ExtArgs>
+      fields: Prisma.PaymentSettingsFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PaymentSettingsFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentSettingsPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PaymentSettingsFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentSettingsPayload>
+        }
+        findFirst: {
+          args: Prisma.PaymentSettingsFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentSettingsPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PaymentSettingsFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentSettingsPayload>
+        }
+        findMany: {
+          args: Prisma.PaymentSettingsFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentSettingsPayload>[]
+        }
+        create: {
+          args: Prisma.PaymentSettingsCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentSettingsPayload>
+        }
+        createMany: {
+          args: Prisma.PaymentSettingsCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PaymentSettingsCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentSettingsPayload>[]
+        }
+        delete: {
+          args: Prisma.PaymentSettingsDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentSettingsPayload>
+        }
+        update: {
+          args: Prisma.PaymentSettingsUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentSettingsPayload>
+        }
+        deleteMany: {
+          args: Prisma.PaymentSettingsDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PaymentSettingsUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PaymentSettingsUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentSettingsPayload>[]
+        }
+        upsert: {
+          args: Prisma.PaymentSettingsUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentSettingsPayload>
+        }
+        aggregate: {
+          args: Prisma.PaymentSettingsAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePaymentSettings>
+        }
+        groupBy: {
+          args: Prisma.PaymentSettingsGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PaymentSettingsGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PaymentSettingsCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PaymentSettingsCountAggregateOutputType> | number
+        }
+      }
+    }
+    MercadoPagoAccount: {
+      payload: Prisma.$MercadoPagoAccountPayload<ExtArgs>
+      fields: Prisma.MercadoPagoAccountFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MercadoPagoAccountFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoAccountPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MercadoPagoAccountFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoAccountPayload>
+        }
+        findFirst: {
+          args: Prisma.MercadoPagoAccountFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoAccountPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MercadoPagoAccountFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoAccountPayload>
+        }
+        findMany: {
+          args: Prisma.MercadoPagoAccountFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoAccountPayload>[]
+        }
+        create: {
+          args: Prisma.MercadoPagoAccountCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoAccountPayload>
+        }
+        createMany: {
+          args: Prisma.MercadoPagoAccountCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MercadoPagoAccountCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoAccountPayload>[]
+        }
+        delete: {
+          args: Prisma.MercadoPagoAccountDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoAccountPayload>
+        }
+        update: {
+          args: Prisma.MercadoPagoAccountUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoAccountPayload>
+        }
+        deleteMany: {
+          args: Prisma.MercadoPagoAccountDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MercadoPagoAccountUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MercadoPagoAccountUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoAccountPayload>[]
+        }
+        upsert: {
+          args: Prisma.MercadoPagoAccountUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoAccountPayload>
+        }
+        aggregate: {
+          args: Prisma.MercadoPagoAccountAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMercadoPagoAccount>
+        }
+        groupBy: {
+          args: Prisma.MercadoPagoAccountGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MercadoPagoAccountGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MercadoPagoAccountCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MercadoPagoAccountCountAggregateOutputType> | number
+        }
+      }
+    }
+    MercadoPagoOAuthAttempt: {
+      payload: Prisma.$MercadoPagoOAuthAttemptPayload<ExtArgs>
+      fields: Prisma.MercadoPagoOAuthAttemptFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MercadoPagoOAuthAttemptFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoOAuthAttemptPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MercadoPagoOAuthAttemptFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoOAuthAttemptPayload>
+        }
+        findFirst: {
+          args: Prisma.MercadoPagoOAuthAttemptFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoOAuthAttemptPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MercadoPagoOAuthAttemptFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoOAuthAttemptPayload>
+        }
+        findMany: {
+          args: Prisma.MercadoPagoOAuthAttemptFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoOAuthAttemptPayload>[]
+        }
+        create: {
+          args: Prisma.MercadoPagoOAuthAttemptCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoOAuthAttemptPayload>
+        }
+        createMany: {
+          args: Prisma.MercadoPagoOAuthAttemptCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MercadoPagoOAuthAttemptCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoOAuthAttemptPayload>[]
+        }
+        delete: {
+          args: Prisma.MercadoPagoOAuthAttemptDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoOAuthAttemptPayload>
+        }
+        update: {
+          args: Prisma.MercadoPagoOAuthAttemptUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoOAuthAttemptPayload>
+        }
+        deleteMany: {
+          args: Prisma.MercadoPagoOAuthAttemptDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MercadoPagoOAuthAttemptUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MercadoPagoOAuthAttemptUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoOAuthAttemptPayload>[]
+        }
+        upsert: {
+          args: Prisma.MercadoPagoOAuthAttemptUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoOAuthAttemptPayload>
+        }
+        aggregate: {
+          args: Prisma.MercadoPagoOAuthAttemptAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMercadoPagoOAuthAttempt>
+        }
+        groupBy: {
+          args: Prisma.MercadoPagoOAuthAttemptGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MercadoPagoOAuthAttemptGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MercadoPagoOAuthAttemptCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MercadoPagoOAuthAttemptCountAggregateOutputType> | number
+        }
+      }
+    }
+    MercadoPagoPayment: {
+      payload: Prisma.$MercadoPagoPaymentPayload<ExtArgs>
+      fields: Prisma.MercadoPagoPaymentFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MercadoPagoPaymentFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoPaymentPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MercadoPagoPaymentFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoPaymentPayload>
+        }
+        findFirst: {
+          args: Prisma.MercadoPagoPaymentFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoPaymentPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MercadoPagoPaymentFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoPaymentPayload>
+        }
+        findMany: {
+          args: Prisma.MercadoPagoPaymentFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoPaymentPayload>[]
+        }
+        create: {
+          args: Prisma.MercadoPagoPaymentCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoPaymentPayload>
+        }
+        createMany: {
+          args: Prisma.MercadoPagoPaymentCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MercadoPagoPaymentCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoPaymentPayload>[]
+        }
+        delete: {
+          args: Prisma.MercadoPagoPaymentDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoPaymentPayload>
+        }
+        update: {
+          args: Prisma.MercadoPagoPaymentUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoPaymentPayload>
+        }
+        deleteMany: {
+          args: Prisma.MercadoPagoPaymentDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MercadoPagoPaymentUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MercadoPagoPaymentUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoPaymentPayload>[]
+        }
+        upsert: {
+          args: Prisma.MercadoPagoPaymentUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoPaymentPayload>
+        }
+        aggregate: {
+          args: Prisma.MercadoPagoPaymentAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMercadoPagoPayment>
+        }
+        groupBy: {
+          args: Prisma.MercadoPagoPaymentGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MercadoPagoPaymentGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MercadoPagoPaymentCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MercadoPagoPaymentCountAggregateOutputType> | number
+        }
+      }
+    }
+    MercadoPagoWebhookEvent: {
+      payload: Prisma.$MercadoPagoWebhookEventPayload<ExtArgs>
+      fields: Prisma.MercadoPagoWebhookEventFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MercadoPagoWebhookEventFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoWebhookEventPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MercadoPagoWebhookEventFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoWebhookEventPayload>
+        }
+        findFirst: {
+          args: Prisma.MercadoPagoWebhookEventFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoWebhookEventPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MercadoPagoWebhookEventFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoWebhookEventPayload>
+        }
+        findMany: {
+          args: Prisma.MercadoPagoWebhookEventFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoWebhookEventPayload>[]
+        }
+        create: {
+          args: Prisma.MercadoPagoWebhookEventCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoWebhookEventPayload>
+        }
+        createMany: {
+          args: Prisma.MercadoPagoWebhookEventCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MercadoPagoWebhookEventCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoWebhookEventPayload>[]
+        }
+        delete: {
+          args: Prisma.MercadoPagoWebhookEventDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoWebhookEventPayload>
+        }
+        update: {
+          args: Prisma.MercadoPagoWebhookEventUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoWebhookEventPayload>
+        }
+        deleteMany: {
+          args: Prisma.MercadoPagoWebhookEventDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MercadoPagoWebhookEventUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MercadoPagoWebhookEventUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoWebhookEventPayload>[]
+        }
+        upsert: {
+          args: Prisma.MercadoPagoWebhookEventUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MercadoPagoWebhookEventPayload>
+        }
+        aggregate: {
+          args: Prisma.MercadoPagoWebhookEventAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMercadoPagoWebhookEvent>
+        }
+        groupBy: {
+          args: Prisma.MercadoPagoWebhookEventGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MercadoPagoWebhookEventGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MercadoPagoWebhookEventCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MercadoPagoWebhookEventCountAggregateOutputType> | number
+        }
+      }
+    }
+    UpnodeCommissionEntry: {
+      payload: Prisma.$UpnodeCommissionEntryPayload<ExtArgs>
+      fields: Prisma.UpnodeCommissionEntryFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.UpnodeCommissionEntryFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UpnodeCommissionEntryPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.UpnodeCommissionEntryFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UpnodeCommissionEntryPayload>
+        }
+        findFirst: {
+          args: Prisma.UpnodeCommissionEntryFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UpnodeCommissionEntryPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.UpnodeCommissionEntryFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UpnodeCommissionEntryPayload>
+        }
+        findMany: {
+          args: Prisma.UpnodeCommissionEntryFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UpnodeCommissionEntryPayload>[]
+        }
+        create: {
+          args: Prisma.UpnodeCommissionEntryCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UpnodeCommissionEntryPayload>
+        }
+        createMany: {
+          args: Prisma.UpnodeCommissionEntryCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.UpnodeCommissionEntryCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UpnodeCommissionEntryPayload>[]
+        }
+        delete: {
+          args: Prisma.UpnodeCommissionEntryDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UpnodeCommissionEntryPayload>
+        }
+        update: {
+          args: Prisma.UpnodeCommissionEntryUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UpnodeCommissionEntryPayload>
+        }
+        deleteMany: {
+          args: Prisma.UpnodeCommissionEntryDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.UpnodeCommissionEntryUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.UpnodeCommissionEntryUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UpnodeCommissionEntryPayload>[]
+        }
+        upsert: {
+          args: Prisma.UpnodeCommissionEntryUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UpnodeCommissionEntryPayload>
+        }
+        aggregate: {
+          args: Prisma.UpnodeCommissionEntryAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateUpnodeCommissionEntry>
+        }
+        groupBy: {
+          args: Prisma.UpnodeCommissionEntryGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UpnodeCommissionEntryGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.UpnodeCommissionEntryCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UpnodeCommissionEntryCountAggregateOutputType> | number
+        }
+      }
+    }
+    UpnodeWeeklyStatement: {
+      payload: Prisma.$UpnodeWeeklyStatementPayload<ExtArgs>
+      fields: Prisma.UpnodeWeeklyStatementFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.UpnodeWeeklyStatementFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UpnodeWeeklyStatementPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.UpnodeWeeklyStatementFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UpnodeWeeklyStatementPayload>
+        }
+        findFirst: {
+          args: Prisma.UpnodeWeeklyStatementFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UpnodeWeeklyStatementPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.UpnodeWeeklyStatementFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UpnodeWeeklyStatementPayload>
+        }
+        findMany: {
+          args: Prisma.UpnodeWeeklyStatementFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UpnodeWeeklyStatementPayload>[]
+        }
+        create: {
+          args: Prisma.UpnodeWeeklyStatementCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UpnodeWeeklyStatementPayload>
+        }
+        createMany: {
+          args: Prisma.UpnodeWeeklyStatementCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.UpnodeWeeklyStatementCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UpnodeWeeklyStatementPayload>[]
+        }
+        delete: {
+          args: Prisma.UpnodeWeeklyStatementDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UpnodeWeeklyStatementPayload>
+        }
+        update: {
+          args: Prisma.UpnodeWeeklyStatementUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UpnodeWeeklyStatementPayload>
+        }
+        deleteMany: {
+          args: Prisma.UpnodeWeeklyStatementDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.UpnodeWeeklyStatementUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.UpnodeWeeklyStatementUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UpnodeWeeklyStatementPayload>[]
+        }
+        upsert: {
+          args: Prisma.UpnodeWeeklyStatementUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UpnodeWeeklyStatementPayload>
+        }
+        aggregate: {
+          args: Prisma.UpnodeWeeklyStatementAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateUpnodeWeeklyStatement>
+        }
+        groupBy: {
+          args: Prisma.UpnodeWeeklyStatementGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UpnodeWeeklyStatementGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.UpnodeWeeklyStatementCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UpnodeWeeklyStatementCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1548,6 +2073,7 @@ export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typ
 
 
 export const OrderScalarFieldEnum = {
+  paymentProvider: 'paymentProvider',
   id: 'id',
   fullName: 'fullName',
   email: 'email',
@@ -1672,6 +2198,109 @@ export const CustomPageScalarFieldEnum = {
 } as const
 
 export type CustomPageScalarFieldEnum = (typeof CustomPageScalarFieldEnum)[keyof typeof CustomPageScalarFieldEnum]
+
+
+export const PaymentSettingsScalarFieldEnum = {
+  id: 'id',
+  provider: 'provider',
+  accountId: 'accountId',
+  creditCents: 'creditCents'
+} as const
+
+export type PaymentSettingsScalarFieldEnum = (typeof PaymentSettingsScalarFieldEnum)[keyof typeof PaymentSettingsScalarFieldEnum]
+
+
+export const MercadoPagoAccountScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  label: 'label',
+  publicKey: 'publicKey',
+  access: 'access',
+  refresh: 'refresh',
+  expiresAt: 'expiresAt',
+  confirmedAt: 'confirmedAt',
+  createdAt: 'createdAt'
+} as const
+
+export type MercadoPagoAccountScalarFieldEnum = (typeof MercadoPagoAccountScalarFieldEnum)[keyof typeof MercadoPagoAccountScalarFieldEnum]
+
+
+export const MercadoPagoOAuthAttemptScalarFieldEnum = {
+  hash: 'hash',
+  sessionHash: 'sessionHash',
+  verifier: 'verifier',
+  expiresAt: 'expiresAt'
+} as const
+
+export type MercadoPagoOAuthAttemptScalarFieldEnum = (typeof MercadoPagoOAuthAttemptScalarFieldEnum)[keyof typeof MercadoPagoOAuthAttemptScalarFieldEnum]
+
+
+export const MercadoPagoPaymentScalarFieldEnum = {
+  id: 'id',
+  orderId: 'orderId',
+  accountId: 'accountId',
+  requestKey: 'requestKey',
+  fingerprint: 'fingerprint',
+  requestBody: 'requestBody',
+  method: 'method',
+  totalCents: 'totalCents',
+  providerId: 'providerId',
+  status: 'status',
+  detail: 'detail',
+  reversed: 'reversed',
+  qrCode: 'qrCode',
+  qrImage: 'qrImage',
+  checkedAt: 'checkedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type MercadoPagoPaymentScalarFieldEnum = (typeof MercadoPagoPaymentScalarFieldEnum)[keyof typeof MercadoPagoPaymentScalarFieldEnum]
+
+
+export const MercadoPagoWebhookEventScalarFieldEnum = {
+  key: 'key',
+  resourceId: 'resourceId',
+  userId: 'userId',
+  status: 'status',
+  attempts: 'attempts',
+  receivedAt: 'receivedAt',
+  processedAt: 'processedAt'
+} as const
+
+export type MercadoPagoWebhookEventScalarFieldEnum = (typeof MercadoPagoWebhookEventScalarFieldEnum)[keyof typeof MercadoPagoWebhookEventScalarFieldEnum]
+
+
+export const UpnodeCommissionEntryScalarFieldEnum = {
+  key: 'key',
+  orderId: 'orderId',
+  kind: 'kind',
+  cents: 'cents',
+  salesCents: 'salesCents',
+  refundCents: 'refundCents',
+  statementId: 'statementId',
+  createdAt: 'createdAt'
+} as const
+
+export type UpnodeCommissionEntryScalarFieldEnum = (typeof UpnodeCommissionEntryScalarFieldEnum)[keyof typeof UpnodeCommissionEntryScalarFieldEnum]
+
+
+export const UpnodeWeeklyStatementScalarFieldEnum = {
+  id: 'id',
+  start: 'start',
+  end: 'end',
+  salesCents: 'salesCents',
+  refundCents: 'refundCents',
+  feesCents: 'feesCents',
+  adjustments: 'adjustments',
+  openingCredit: 'openingCredit',
+  closingCredit: 'closingCredit',
+  dueCents: 'dueCents',
+  status: 'status',
+  createdAt: 'createdAt'
+} as const
+
+export type UpnodeWeeklyStatementScalarFieldEnum = (typeof UpnodeWeeklyStatementScalarFieldEnum)[keyof typeof UpnodeWeeklyStatementScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1942,6 +2571,13 @@ export type GlobalOmitConfig = {
   post?: Prisma.PostOmit
   postSEO?: Prisma.PostSEOOmit
   customPage?: Prisma.CustomPageOmit
+  paymentSettings?: Prisma.PaymentSettingsOmit
+  mercadoPagoAccount?: Prisma.MercadoPagoAccountOmit
+  mercadoPagoOAuthAttempt?: Prisma.MercadoPagoOAuthAttemptOmit
+  mercadoPagoPayment?: Prisma.MercadoPagoPaymentOmit
+  mercadoPagoWebhookEvent?: Prisma.MercadoPagoWebhookEventOmit
+  upnodeCommissionEntry?: Prisma.UpnodeCommissionEntryOmit
+  upnodeWeeklyStatement?: Prisma.UpnodeWeeklyStatementOmit
 }
 
 /* Types for Logging */

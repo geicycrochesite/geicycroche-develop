@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams, useParams } from 'next/navigation'
 import { useCart } from '@/core/context/CartContext'
 
 interface Order {
@@ -20,7 +20,8 @@ interface Order {
   }>
 }
 
-export default function PedidoPage({ params }: { params: { orderId: string } }) {
+export default function PedidoPage() {
+  const params = useParams<{ orderId: string }>()
   const { clearCart } = useCart()
   const searchParams = useSearchParams()
   const status = searchParams.get('status')
